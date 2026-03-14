@@ -56,6 +56,7 @@ export function SlideUp({
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
+  delay?: number;
   threshold?: number;
   once?: boolean;
 }
@@ -63,6 +64,7 @@ interface ScrollRevealProps {
 export function ScrollReveal({
   children,
   className,
+  delay = 0,
   threshold = 0.1,
   once = true,
 }: ScrollRevealProps) {
@@ -71,7 +73,7 @@ export function ScrollReveal({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={cn(className)}
     >
       {children}
